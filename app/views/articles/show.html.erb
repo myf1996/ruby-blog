@@ -7,5 +7,14 @@
       <%= @article.title %> <br/>
       <small> <%= @article.body %> </small>, <small> <%= @article.created_at %> </small>
     </li>
+    
+    <li><%= link_to "Edit", edit_article_path(@article) %></li>
+    <li>
+      <%= link_to "Destroy", article_path(@article), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+    </li>
+
   
 </ul>
