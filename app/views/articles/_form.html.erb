@@ -1,4 +1,4 @@
-<%= form_with model: article do |form| %>
+<%= form_with model: article , multipart: true do |form| %>
   <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
@@ -13,6 +13,21 @@
     <% article.errors.full_messages_for(:body).each do |message| %>
       <div><%= message %></div>
     <% end %>
+  </div>
+
+
+  <div>
+    <%= form.label :file %><br>
+    <%= form.file_field :file %><br>
+    <% article.errors.full_messages_for(:file).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+
+  <div>
+    <%= form.label :status %><br>
+    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
   </div>
 
   <div>

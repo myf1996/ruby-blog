@@ -1,11 +1,22 @@
+
 <h1>Detail</h1>
 
 <ul>
   
     <li>
-    <%= @article.id %> <br/>
+      <% if @article.file.attached? %>
+        <%= image_tag(@article.file) %>
+      <% end %>
+
+      <%= @article.id %> <br/>
       <%= @article.title %> <br/>
-      <small> <%= @article.body %> </small>, <small> <%= @article.created_at %> </small>
+      <small> <%= @article.body %> </small> <br/>
+      <small> <%= @article.created_at %> </small>
+      
+      <% if @article.file.attached? %>
+        <%= link_to "Download File", url_for(@article.file) %>
+      <% end %>
+
     </li>
     
     <li><%= link_to "Edit", edit_article_path(@article) %></li>
@@ -18,3 +29,10 @@
 
   
 </ul>
+Our blog has <%= @article.comments.public_count %> public comments and counting! <br/>
+Our blog has <%= @article.comments.archived_count %> delete comments and counting!
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>

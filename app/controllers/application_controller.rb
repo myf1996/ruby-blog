@@ -1,4 +1,5 @@
 require "#{Rails.root}/lib/custom_exception/exception_error.rb"
+require "#{Rails.root}/lib/misc/email.rb"
 
 class ApplicationController < ActionController::Base
   rescue_from ExceptionError, with: :exception_error
