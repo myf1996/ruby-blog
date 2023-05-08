@@ -36,7 +36,7 @@ def send_email(dto)
   #   )
   # end
 
-  sg = SendGrid::API.new(api_key: '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')
+  sg = SendGrid::API.new(api_key: 'API_KEY')
 
   begin
     puts "===========to_json: #{mail.to_json}"
